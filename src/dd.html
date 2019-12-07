@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+// 引入封装的leftMenu
+import leftMenu from '../../../components/haijia/leftMenu/index'
+import dispatchedDlog from './child/repairDispatched-dlog';
+import showDlog from './child/repairShow-dlog';
+import reportWorkDlog from './child/repairReport-dlog';
+<el-table
+  :v-loading="loading"
+  :data="tableData"
+  border
+  style="width: 100%">
+  <el-table-column
+    fixed="left"
+    prop="code"
+    label="工单编号"
+    min-width="150">
+  </el-table-column>
+  <el-table-column
+    prop="customerName"
+    label="客户名称"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="address"
+    label="客户地址"
+    min-width="150">
+  </el-table-column>
+  <el-table-column
+    prop="contactName"
+    label="客户联系人"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="contractId"
+    label="销售合同"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="machineModelName"
+    label="设备机型"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="requestStartTime"
+    label="安装时间"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="text"
+    label="故障描述"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="image"
+    label="故障照片"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    prop="level"
+    label="优先级"
+    min-width="120">
+  </el-table-column>
+  <el-table-column
+    fixed="right"
+    label="操作"
+    align="center"
+    width="150">
+    <template slot-scope="scope">
+      <!--派工-->
+      <el-button v-show="dispatchedBut" @click="onDispatchedData(scope.row)" type="text" size="small" v-model="dialogTitle">{{title.dispatchedTxt}}</el-button>
+      <!--查看-->
+      <el-button v-show="showBut" @click="onShowData(scope.row)" type="text" size="small" v-model="dialogTitle">{{title.showTxt}}</el-button>
+      <!--取消-->
+      <el-button v-show="cancelBut" @click="onCancelData(scope.row)" type="text" size="small" v-model="dialogTitle">{{title.cancelTxt}}</el-button>
+      <!--报工-->
+      <el-button v-show="reportWorkBut" @click="onReportData(scope.row)" type="text" size="small" v-model="dialogTitle">{{title.reportWorkTxt}}</el-button>
+      <!--审核-->
+      <el-button v-show="examineBut" @click="onExamineData(scope.row)" type="text" size="small" v-model="dialogTitle">{{title.examineTxt}}</el-button>
+
+    </template>
+  </el-table-column>
+</el-table>
+tableData: [
+{
+code: 'A100054632456',
+customerName: "王雨虹",
+address: "上海市浦东新区御桥",
+contactName: "牟时金",
+contractId: "1024355465522",
+machineModelName: "A1-004",
+requestStartTime: "2019-07-11",
+text: "提示设备设施连接冲突",
+image:"http:baidu.com",
+level:"高"
+},
+{
+code: 'A100054632456',
+customerName: "黄祥",
+address: "上海市浦东新区御桥",
+contactName: "梅梅",
+contractId: "1024355465522",
+machineModelName: "A1-004",
+requestStartTime: "2019-07-11",
+text: "提示设备设施连接冲突",
+image:"http:baidu.com",
+level:"低"
+}
+],
+  <script>
+    let obj = {
+      name: '1',
+      age: 2
+    }
+    console.log(obj.name)
+    console.log(obj['name'])
+    for(item in obj) {
+      console.log('地方', obj[item])
+    }
+  </script>
+</body>
+</html>
